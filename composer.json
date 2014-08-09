@@ -1,0 +1,22 @@
+{
+    "name": "passet/passet",
+    "description": "php asset management system.",
+    "keywords": ["asset", "javascript", "stylesheet", "css", "image"],
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/k-motoyan",
+    "authors": [
+      {
+        "name": "k-motoyan"
+      }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*",
+        "satooshi/php-coveralls": "dev-master"
+    },
+    "autoload": {
+      "psr-0": {
+        "Passet\\": "src"
+      }
+    }
+}

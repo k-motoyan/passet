@@ -1,0 +1,8 @@
+.idea
+.vagrant
+build
+vendor
+passet.iml
+composer.phar
+composer.lock
+Vagrantfile
