@@ -132,7 +132,7 @@ class ImgTest extends PHPUnit_Framework_TestCase
         $encoded_image = base64_encode(file_get_contents('tests/_fixture/static/img/img.gif'));
         $img = new Img('tests/_fixture/static/img/img.gif');
         $this->assertEquals(
-            "<img src=\"data:image/gif:base64,{$encoded_image}\">",
+            "<img src=\"data:image/gif;base64,{$encoded_image}\">",
             $img->enableAsyncLoad()->writeInline()->build()
         );
     }

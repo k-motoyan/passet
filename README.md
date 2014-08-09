@@ -99,7 +99,7 @@ imgタグはインラインで読み込むかsrcパスを指定して読み込�
 ```php
 <?php require 'vendor/autoload.php'; ?>
 
-<?php \Passet\Manage::img('/path/to/img')->build(); ?>
+<?php echo \Passet\Manage::img('/path/to/img')->build(); ?>
 <?php \Passet\Manage::css('/path/to/img')->writeInline()->build(); ?>
 ```
 

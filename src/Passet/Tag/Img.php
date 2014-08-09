@@ -105,7 +105,7 @@ class Img extends TagAbs
         if ($this->_inline) {
             $encoded_image = base64_encode(file_get_contents($this->_attributes['src']));
             $mime_type = image_type_to_mime_type($this->_image_type);
-            $this->_attributes['src'] = "data:{$mime_type}:base64,{$encoded_image}";
+            $this->_attributes['src'] = "data:{$mime_type};base64,{$encoded_image}";
 
             if (isset($this->_attributes['async'])) {
                 unset($this->_attributes['async']);
