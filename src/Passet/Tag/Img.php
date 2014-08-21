@@ -2,6 +2,7 @@
 
 namespace Passet\Tag;
 
+use Passet\Config\Parameter;
 use \Passet\Exception\PassetInvalidArgumentException,
     \Passet\Exception\PassetSrcUnreadableException,
     \Passet\Exception\PassetUnknownImageTypeException;
@@ -21,6 +22,7 @@ class Img extends TagAbs
      */
     public function __construct($src_path)
     {
+
         if (!is_string($src_path)) {
             throw new PassetInvalidArgumentException('argument should be string.');
         }

@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/k-motoyan/passet.svg?branch=master)](https://travis-ci.org/k-motoyan/passet)
 [![Coverage Status](https://coveralls.io/repos/k-motoyan/passet/badge.png?branch=master)](https://coveralls.io/r/k-motoyan/passet?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/k-motoyan/passet/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/k-motoyan/passet/?branch=master)
 
 # passet
 

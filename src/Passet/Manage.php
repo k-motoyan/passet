@@ -9,15 +9,30 @@ use \Passet\Container\Container,
 
 class Manage
 {
+    /** @var array passet optional parameters. */
+    private static $_parameters;
+
+    /**
+     * initialize passet.
+     *
+     * @param array $parameters
+     * @return void
+     */
+    public function setting(array $parameters=array())
+    {
+        $default_parameters = include 'Config/Parameter.php';
+        self::$_parameters = array_merge($default_parameters, $parameters);
+    }
+
     /**
      * return the Script instance.
      *
-     * @param $src_path javascript src path.
+     * @param string $src_path javascript src path.
      * @return Script
      */
     public static function js($src_path)
     {
-        return new Script($src_path);
+        return new Script( self::_generatePath(self::$_parameters['js_base_path'], $src_path) );
     }
 
     /**
@@ -35,12 +50,12 @@ class Manage
     /**
      * return the Style instance.
      *
-     * @param $src_path style sheet src path.
+     * @param string $src_path style sheet src path.
      * @return Style
      */
     public static function css($src_path)
     {
-        return new Style($src_path);
+        return new Style( self::_generatePath(self::$_parameters['css_base_path'], $src_path) );
     }
 
     /**
@@ -58,11 +73,26 @@ class Manage
     /**
      * return the Img instance.
      *
-     * @param $src_path image src path.
+     * @param string $src_path image src path.
      * @return Img
      */
     public static function img($src_path)
     {
-        return new Img($src_path);
+        return new Img( self::_generatePath(self::$_parameters['img_base_path'], $src_path) );
+    }
+
+    /**
+     * return the combined base path and original path.
+     *
+     * @param string $base_path file base path.
+     * @param string $original_path file original path.
+     * @return string
+     */
+    private static function _generatePath($base_path, $original_path)
+    {
+        if (empty($base_path)) {
+            return $original_path;
+        }
+        return rtrim($base_path, '/') . '/' . ltrim($original_path, '/');
     }
 }

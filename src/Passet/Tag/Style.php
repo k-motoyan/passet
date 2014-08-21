@@ -2,6 +2,7 @@
 
 namespace Passet\Tag;
 
+use Passet\Config\Parameter;
 use \Passet\Container\Container,
     \Passet\Exception\PassetInvalidArgumentException,
     \Passet\Exception\PassetSrcUnreadableException;
