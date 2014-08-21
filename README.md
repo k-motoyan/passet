@@ -101,7 +101,7 @@ imgタグはインラインで読み込むかsrcパスを指定して読み込�
 <?php require 'vendor/autoload.php'; ?>
 
 <?php echo \Passet\Manage::img('/path/to/img')->build(); ?>
-<?php \Passet\Manage::css('/path/to/img')->writeInline()->build(); ?>
+<?php echo \Passet\Manage::img('/path/to/img')->writeInline()->build(); ?>
 ```
 
 出力出来るimageファイルは以下のタイプのものに限定されています。  
