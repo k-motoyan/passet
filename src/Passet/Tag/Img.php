@@ -2,7 +2,6 @@
 
 namespace Passet\Tag;
 
-use Passet\Config\Parameter;
 use \Passet\Exception\PassetInvalidArgumentException,
     \Passet\Exception\PassetSrcUnreadableException,
     \Passet\Exception\PassetUnknownImageTypeException;
