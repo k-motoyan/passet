@@ -18,7 +18,9 @@ class Style extends TagAbs
     public function __construct($href)
     {
         if (!is_string($href)) {
-            throw new PassetInvalidArgumentException('argument should be string.');
+            throw new PassetInvalidArgumentException(
+                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUD_BE_STRING
+            );
         }
         if (!is_readable($href)) {
             throw new PassetSrcUnreadableException('file unreadable. file path:' . $href);
@@ -39,7 +41,9 @@ class Style extends TagAbs
     public function setMedia($media)
     {
         if (!is_string($media)) {
-            throw new PassetInvalidArgumentException('argument should be string.');
+            throw new PassetInvalidArgumentException(
+                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUD_BE_STRING
+            );
         }
         $this->_attributes['media'] = $media;
     }

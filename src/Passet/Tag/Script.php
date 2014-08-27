@@ -18,7 +18,9 @@ class Script extends TagAbs
     public function __construct($src_path)
     {
         if (!is_string($src_path)) {
-            throw new PassetInvalidArgumentException('argument should be string.');
+            throw new PassetInvalidArgumentException(
+                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUD_BE_STRING
+            );
         }
         if (!is_readable($src_path)) {
             throw new PassetSrcUnreadableException('file unreadable. file path:' . $src_path);

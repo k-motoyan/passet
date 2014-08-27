@@ -2,5 +2,4 @@
 
 namespace Passet\Exception;
 
-
-class PassetUnknownImageTypeException extends \Exception {}
+class PassetUnknownImageTypeException extends \DomainException implements PassetExceptionMarker {}

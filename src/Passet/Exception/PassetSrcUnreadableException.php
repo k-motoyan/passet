@@ -2,4 +2,4 @@
 
 namespace Passet\Exception;
 
-class PassetSrcUnreadableException extends \Exception {}
+class PassetSrcUnreadableException extends \RuntimeException implements PassetExceptionMarker {}

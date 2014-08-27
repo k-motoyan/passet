@@ -23,7 +23,9 @@ class Img extends TagAbs
     {
 
         if (!is_string($src_path)) {
-            throw new PassetInvalidArgumentException('argument should be string.');
+            throw new PassetInvalidArgumentException(
+                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUD_BE_STRING
+            );
         }
         if (!is_readable($src_path)) {
             throw new PassetSrcUnreadableException('file unreadable. file path:' . $src_path);
@@ -60,7 +62,9 @@ class Img extends TagAbs
     public function setAlt($alt)
     {
         if (!is_string($alt)) {
-            throw new PassetInvalidArgumentException('argument should be string.');
+            throw new PassetInvalidArgumentException(
+                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUD_BE_STRING
+            );
         }
         $this->_attributes['alt'] = $alt;
         return $this;
@@ -76,7 +80,9 @@ class Img extends TagAbs
     public function setWidth($width)
     {
         if (!is_numeric($width) || is_float($width) || $width < 1) {
-            throw new PassetInvalidArgumentException('argument should be positive integer.');
+            throw new PassetInvalidArgumentException(
+                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUL_BE_POSITIVE_INTEGER
+            );
         }
         $this->_attributes['width'] = (string)$width;
     }
@@ -91,7 +97,9 @@ class Img extends TagAbs
     public function setHeight($height)
     {
         if (!is_numeric($height) || is_float($height) || $height < 1) {
-            throw new PassetInvalidArgumentException('argument should be positive integer.');
+            throw new PassetInvalidArgumentException(
+                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUL_BE_POSITIVE_INTEGER
+            );
         }
         $this->_attributes['height'] = (string)$height;
     }
