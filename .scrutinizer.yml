@@ -5,7 +5,7 @@ build:
 tools:
     php_sim:
         enabled: true
-        min_mass: 24
+        min_mass: 16
     php_pdepend:
         enabled: true
         configuration_file: null
