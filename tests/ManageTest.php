@@ -41,4 +41,10 @@ class ManageTest extends PHPUnit_Framework_TestCase
         Manage::css('tests/_fixture/static/css/2.css')->add();
         Manage::outputCss();
     }
+
+    public function testHaxe()
+    {
+        $haxe = Manage::haxe('tests/_fixture/static/js/haxe.js', 'tests/_fixture/haxe/', 'build.hxml');
+        $this->assertEquals(get_class($haxe), 'Passet\Tag\Script');
+    }
 }

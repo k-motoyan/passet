@@ -2,10 +2,11 @@
 
 namespace Passet;
 
-use \Passet\Container\Container,
-    \Passet\Tag\Script,
-    \Passet\Tag\Style,
-    \Passet\Tag\Img;
+use \Passet\Container\Container;
+use \Passet\Tag\Script;
+use \Passet\Tag\Style;
+use \Passet\Tag\Img;
+use \Passet\Compiler\Haxe;
 
 class Manage
 {
@@ -18,7 +19,7 @@ class Manage
      * @param array $parameters
      * @return void
      */
-    public function setting(array $parameters=array())
+    public static function setting(array $parameters=array())
     {
         $default_parameters = include 'Config/Parameter.php';
         self::$_parameters = array_merge($default_parameters, $parameters);
@@ -82,6 +83,20 @@ class Manage
     }
 
     /**
+     * return the Script instance from compiled javascript by haxe.
+     *
+     * @param string $src_path compiled javascript src path.
+     * @param string $project_path haxe project directory path.
+     * @param string $hxml_file haxe compile option file.
+     * @return Script
+     */
+    public static function haxe($src_path, $project_path, $hxml_file)
+    {
+        (new Haxe($project_path, $hxml_file))->compile();
+        return self::js($src_path);
+    }
+
+    /**
      * return the combined base path and original path.
      *
      * @param string $base_path file base path.
@@ -93,6 +108,8 @@ class Manage
         if (empty($base_path)) {
             return $original_path;
         }
-        return rtrim($base_path, '/') . '/' . ltrim($original_path, '/');
+
+        $ds = DIRECTORY_SEPARATOR;
+        return rtrim($base_path, $ds) . $ds . ltrim($original_path, $ds);
     }
 }

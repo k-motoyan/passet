@@ -1,0 +1,3 @@
+-cp src
+-js ../static/js/haxe.js
+-main Main
