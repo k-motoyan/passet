@@ -6,6 +6,9 @@ build:
         override:
             -
                 command: 'phpunit --exclude-group compile'
+                coverage:
+                    file: build/logs/clover.xml
+                    format: php-clover
 tools:
     php_sim:
         enabled: true
