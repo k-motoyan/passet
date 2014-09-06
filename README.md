@@ -1,3 +1,4 @@
+[![License](https://poser.pugx.org/passet/passet/license.svg)](https://packagist.org/packages/passet/passet)
 [![Build Status](https://scrutinizer-ci.com/g/k-motoyan/passet/badges/build.png?b=master)](https://scrutinizer-ci.com/g/k-motoyan/passet/build-status/master)
 [![Code Coverage](https://scrutinizer-ci.com/g/k-motoyan/passet/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/k-motoyan/passet/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/k-motoyan/passet/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/k-motoyan/passet/?branch=master)
