@@ -1,12 +1,11 @@
 build:
     environment:
         php:
-            version: 5.5.12
-    dependencies:
-        before:
-            - 'sudo apt-get install libzip-dev ocaml git camlp4'
-            - 'git clone --recursive https://github.com/HaxeFoundation/haxe.git haxe'
-            - 'cd haxe && make clean all && sudo make install'
+            version: 5.5.14
+    tests:
+        override:
+            -
+                command: 'phpunit --exclude-group compile'
 tools:
     php_sim:
         enabled: true
