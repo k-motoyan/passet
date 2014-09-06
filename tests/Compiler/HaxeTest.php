@@ -42,6 +42,9 @@ class HaxeTest extends PHPUnit_Framework_TestCase
         new Haxe('', 'build.hxml');
     }
 
+    /**
+     * @group compile
+     */
     public function testCompile()
     {
         (new Haxe('tests/_fixture/haxe/', 'build.hxml'))->compile();

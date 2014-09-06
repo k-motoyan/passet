@@ -42,6 +42,9 @@ class ManageTest extends PHPUnit_Framework_TestCase
         Manage::outputCss();
     }
 
+    /**
+     * @group compile
+     */
     public function testHaxe()
     {
         $haxe = Manage::haxe('tests/_fixture/static/js/haxe.js', 'tests/_fixture/haxe/', 'build.hxml');
