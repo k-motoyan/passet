@@ -4,9 +4,9 @@ build:
             version: 5.5.12
     dependencies:
         before:
-            - 'apt-get install libzip-dev ocaml git camlp4'
+            - 'sudo apt-get install libzip-dev ocaml git camlp4'
             - 'git clone --recursive https://github.com/HaxeFoundation/haxe.git haxe'
-            - 'cd haxe && make clean all && make install'
+            - 'cd haxe && make clean all && sudo make install'
 tools:
     php_sim:
         enabled: true
