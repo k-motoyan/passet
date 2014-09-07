@@ -2,9 +2,9 @@
 
 namespace Passet\Tag;
 
-use \Passet\Exception\PassetInvalidArgumentException,
-    \Passet\Exception\PassetSrcUnreadableException,
-    \Passet\Exception\PassetUnknownImageTypeException;
+use \Passet\Exception\PassetInvalidArgumentException;
+use \Passet\Exception\PassetSrcUnreadableException;
+use \Passet\Exception\PassetUnknownImageTypeException;
 
 class Img extends TagAbs
 {
@@ -17,21 +17,19 @@ class Img extends TagAbs
      * @throws PassetInvalidArgumentException
      * @throws PassetSrcUnreadableException
      * @throws PassetUnknownImageTypeException
-     * @param string $src_path src path.
+     * @param string $image_src_path src path.
      */
-    public function __construct($src_path)
+    public function __construct($image_src_path)
     {
 
-        if (!is_string($src_path)) {
-            throw new PassetInvalidArgumentException(
-                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUD_BE_STRING
-            );
+        if (!is_string($image_src_path)) {
+            throw new PassetInvalidArgumentException('first argument should be string.');
         }
-        if (!is_readable($src_path)) {
-            throw new PassetSrcUnreadableException('file unreadable. file path:' . $src_path);
+        if (!is_readable($image_src_path)) {
+            throw new PassetSrcUnreadableException('file unreadable. file path:' . $image_src_path);
         }
 
-        list(/* height */, /* width */, $type) = getimagesize($src_path);
+        list(/* height */, /* width */, $type) = getimagesize($image_src_path);
         switch ($type) {
             case IMAGETYPE_GIF:
                 $this->_image_type = IMAGETYPE_GIF;
@@ -49,7 +47,7 @@ class Img extends TagAbs
                 throw new PassetUnknownImageTypeException('src is not image.');
         }
 
-        $this->_attributes['src'] = $src_path;
+        $this->_attributes['src'] = $image_src_path;
     }
 
     /**
@@ -62,9 +60,7 @@ class Img extends TagAbs
     public function setAlt($alt)
     {
         if (!is_string($alt)) {
-            throw new PassetInvalidArgumentException(
-                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUD_BE_STRING
-            );
+            throw new PassetInvalidArgumentException('first argument should be string.');
         }
         $this->_attributes['alt'] = $alt;
         return $this;
@@ -80,9 +76,7 @@ class Img extends TagAbs
     public function setWidth($width)
     {
         if (!is_numeric($width) || is_float($width) || $width < 1) {
-            throw new PassetInvalidArgumentException(
-                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUL_BE_POSITIVE_INTEGER
-            );
+            throw new PassetInvalidArgumentException('first argument should be positive integer.');
         }
         $this->_attributes['width'] = (string)$width;
     }
@@ -97,9 +91,7 @@ class Img extends TagAbs
     public function setHeight($height)
     {
         if (!is_numeric($height) || is_float($height) || $height < 1) {
-            throw new PassetInvalidArgumentException(
-                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUL_BE_POSITIVE_INTEGER
-            );
+            throw new PassetInvalidArgumentException('first argument should be positive integer.');
         }
         $this->_attributes['height'] = (string)$height;
     }

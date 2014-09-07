@@ -2,9 +2,9 @@
 
 namespace Passet\Tag;
 
-use \Passet\Container\Container,
-    \Passet\Exception\PassetInvalidArgumentException,
-    \Passet\Exception\PassetSrcUnreadableException;
+use \Passet\Container\Container;
+use \Passet\Exception\PassetInvalidArgumentException;
+use \Passet\Exception\PassetSrcUnreadableException;
 
 class Style extends TagAbs
 {
@@ -18,9 +18,7 @@ class Style extends TagAbs
     public function __construct($href)
     {
         if (!is_string($href)) {
-            throw new PassetInvalidArgumentException(
-                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUD_BE_STRING
-            );
+            throw new PassetInvalidArgumentException('first argument should be string.');
         }
         if (!is_readable($href)) {
             throw new PassetSrcUnreadableException('file unreadable. file path:' . $href);
@@ -41,9 +39,7 @@ class Style extends TagAbs
     public function setMedia($media)
     {
         if (!is_string($media)) {
-            throw new PassetInvalidArgumentException(
-                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUD_BE_STRING
-            );
+            throw new PassetInvalidArgumentException('first argument should be string.');
         }
         $this->_attributes['media'] = $media;
     }

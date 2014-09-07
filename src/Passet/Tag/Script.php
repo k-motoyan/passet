@@ -2,9 +2,9 @@
 
 namespace Passet\Tag;
 
-use \Passet\Container\Container,
-    \Passet\Exception\PassetInvalidArgumentException,
-    \Passet\Exception\PassetSrcUnreadableException;
+use \Passet\Container\Container;
+use \Passet\Exception\PassetInvalidArgumentException;
+use \Passet\Exception\PassetSrcUnreadableException;
 
 class Script extends TagAbs
 {
@@ -13,19 +13,17 @@ class Script extends TagAbs
      *
      * @throws PassetInvalidArgumentException
      * @throws PassetSrcUnreadableException
-     * @param string $src_path src path.
+     * @param string $script_src_path src path.
      */
-    public function __construct($src_path)
+    public function __construct($script_src_path)
     {
-        if (!is_string($src_path)) {
-            throw new PassetInvalidArgumentException(
-                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUD_BE_STRING
-            );
+        if (!is_string($script_src_path)) {
+            throw new PassetInvalidArgumentException('first argument should be string.');
         }
-        if (!is_readable($src_path)) {
-            throw new PassetSrcUnreadableException('file unreadable. file path:' . $src_path);
+        if (!is_readable($script_src_path)) {
+            throw new PassetSrcUnreadableException('file unreadable. file path:' . $script_src_path);
         }
-        $this->_attributes['src'] = $src_path;
+        $this->_attributes['src'] = $script_src_path;
         $this->_attributes['type'] = 'application/javascript';
     }
 

@@ -27,9 +27,7 @@ abstract class TagAbs
     public function setId($id)
     {
         if (!is_string($id)) {
-            throw new PassetInvalidArgumentException(
-                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUD_BE_STRING
-            );
+            throw new PassetInvalidArgumentException('first argument should be string.');
         }
         $this->_attributes['id'] = $id;
         return $this;
@@ -45,9 +43,7 @@ abstract class TagAbs
     public function setClass($class)
     {
         if (!is_string($class)) {
-            throw new PassetInvalidArgumentException(
-                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUD_BE_STRING
-            );
+            throw new PassetInvalidArgumentException('first argument should be string.');
         }
         $this->_attributes['class'] = $class;
         return $this;
@@ -63,9 +59,7 @@ abstract class TagAbs
     public function setType($type)
     {
         if (!is_string($type)) {
-            throw new PassetInvalidArgumentException(
-                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUD_BE_STRING
-            );
+            throw new PassetInvalidArgumentException('first argument should be string.');
         }
         $this->_attributes['type'] = $type;
         return $this;
@@ -103,10 +97,11 @@ abstract class TagAbs
      */
     public function setCustomAttribute($attr_name, $attr_val='')
     {
-        if (!is_string($attr_name) || !is_string($attr_val)) {
-            throw new PassetInvalidArgumentException(
-                PassetInvalidArgumentException::MESSAGE_ARGUMENT_SHOUD_BE_STRING
-            );
+        if (!is_string($attr_name)) {
+            throw new PassetInvalidArgumentException('first argument should be string.');
+        }
+        if (!is_string($attr_val)) {
+            throw new PassetInvalidArgumentException('second argument should be string.');
         }
         $this->_attributes[$attr_name] = $attr_val;
         return $this;
