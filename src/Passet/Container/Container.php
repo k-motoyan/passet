@@ -17,7 +17,6 @@ class Container
      * add container to \Passet\Tag\Script instance.
      *
      * @param Script $tag_script \Passet\Tag\Script instance.
-     * @return void
      */
     public static function addScript(Script $tag_script)
     {
@@ -28,7 +27,6 @@ class Container
      * add container to \Passet\Tag\Style instance.
      *
      * @param Style $tag_style \Passet\Tag\Style instance.
-     * @return void
      */
     public static function addStyle(Style $tag_style)
     {

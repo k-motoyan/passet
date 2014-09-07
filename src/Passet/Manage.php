@@ -17,7 +17,6 @@ class Manage
      * initialize passet.
      *
      * @param array $parameters
-     * @return void
      */
     public static function setting(array $parameters=array())
     {
@@ -38,8 +37,6 @@ class Manage
 
     /**
      * output retain script tags.
-     *
-     * @return void
      */
     public static function outputJs()
     {
@@ -61,8 +58,6 @@ class Manage
 
     /**
      * output retain style tags.
-     *
-     * @return void
      */
     public static function outputCss()
     {
