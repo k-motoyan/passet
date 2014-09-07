@@ -49,5 +49,16 @@ class ManageTest extends PHPUnit_Framework_TestCase
     {
         $haxe = Manage::haxe('tests/_fixture/static/js/haxe.js', 'tests/_fixture/haxe/', 'build.hxml');
         $this->assertEquals(get_class($haxe), 'Passet\Tag\Script');
+        unlink('tests/_fixture/static/js/haxe.js');
+    }
+
+    /**
+     * @group compile
+     */
+    public function testCoffee()
+    {
+        $coffee = Manage::coffee('tests/_fixture/static/js/coffee.js', 'tests/_fixture/coffee/src/');
+        $this->assertEquals(get_class($coffee), 'Passet\Tag\Script');
+        unlink('tests/_fixture/static/js/coffee.js');
     }
 }

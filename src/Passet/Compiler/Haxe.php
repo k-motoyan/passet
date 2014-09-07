@@ -50,11 +50,9 @@ class Haxe
      */
     public function compile()
     {
-        $output = [];
         exec("cd {$this->_project_path} && haxe {$this->_hxml_file}", $output, $result_code);
         if ($result_code > 0) {
-            $error_message = 'Haxe compile Error!!' . PHP_EOL . join($output, PHP_EOL);
-            throw new PassetCompileException($error_message);
+            throw new PassetCompileException('Haxe compile Error!!');
         }
     }
 }

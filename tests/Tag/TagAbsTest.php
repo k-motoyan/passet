@@ -62,11 +62,18 @@ class TagAbsTest extends PHPUnit_Framework_TestCase
         }, $this, TagAbsTest::TEST_CLASS_NAME)->__invoke();
     }
 
-    public function testSetCustomAttributePassetInvalidArgumentException()
+    public function testSetCustomAttributePassetInvalidArgumentException1()
     {
         $this->setExpectedException('\Passet\Exception\PassetInvalidArgumentException');
         $tag = $this->getMockForAbstractClass(TagAbsTest::TEST_CLASS_NAME);
         $tag->setCustomAttribute(new StdClass);
+    }
+
+    public function testSetCustomAttributePassetInvalidArgumentException2()
+    {
+        $this->setExpectedException('\Passet\Exception\PassetInvalidArgumentException');
+        $tag = $this->getMockForAbstractClass(TagAbsTest::TEST_CLASS_NAME);
+        $tag->setCustomAttribute('', array());
     }
 
     public function testSetType()

@@ -1,7 +1,15 @@
 {
     "name": "passet/passet",
     "description": "php asset management system.",
-    "keywords": ["asset", "javascript", "stylesheet", "css", "image"],
+    "keywords": [
+        "asset",
+        "javascript",
+        "stylesheet",
+        "css",
+        "image",
+        "haxe",
+        "coffee script"
+    ],
     "type": "library",
     "license": "MIT",
     "homepage": "https://github.com/k-motoyan",

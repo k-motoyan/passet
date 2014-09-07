@@ -8,11 +8,9 @@ class HaxeTest extends PHPUnit_Framework_TestCase
 
     public function testConstruct()
     {
-        $haxe = new Haxe('tests/_fixture/haxe/', 'build.hxml');
-        $this->assertTrue(is_a($haxe, self::TEST_CLASS_NAME));
-
         Closure::bind(function() {
             $haxe = new Haxe('tests/_fixture/haxe/', 'build.hxml');
+            $this->assertTrue(is_a($haxe, HaxeTest::TEST_CLASS_NAME));
             $this->assertEquals('tests/_fixture/haxe/', $haxe->_project_path);
             $this->assertEquals('build.hxml', $haxe->_hxml_file);
         }, $this, self::TEST_CLASS_NAME)->__invoke();
@@ -49,5 +47,6 @@ class HaxeTest extends PHPUnit_Framework_TestCase
     {
         (new Haxe('tests/_fixture/haxe/', 'build.hxml'))->compile();
         $this->assertTrue(file_exists('tests/_fixture/static/js/haxe.js'));
+        unlink('tests/_fixture/static/js/haxe.js');
     }
 }

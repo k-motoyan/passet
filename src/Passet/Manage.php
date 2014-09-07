@@ -7,6 +7,7 @@ use \Passet\Tag\Script;
 use \Passet\Tag\Style;
 use \Passet\Tag\Img;
 use \Passet\Compiler\Haxe;
+use \Passet\Compiler\Coffee;
 
 class Manage
 {
@@ -89,6 +90,19 @@ class Manage
     {
         (new Haxe($project_path, $hxml_file))->compile();
         return self::js($src_path);
+    }
+
+    /**
+     * return the Script instance from compiled javascript by coffee.
+     *
+     * @param string $js_path
+     * @param string $coffee_path
+     * @return Script
+     */
+    public static function coffee($js_path, $coffee_path)
+    {
+        $js_file_path = (new Coffee($js_path, $coffee_path))->compile();
+        return self::js($js_file_path);
     }
 
     /**
