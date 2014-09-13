@@ -11,7 +11,7 @@ class CoffeeTest extends PHPUnit_Framework_TestCase
         Closure::bind(function() {
             $coffee = new Coffee('tests/_fixture/static/js/', 'tests/_fixture/coffee/src/');
             $this->assertTrue(is_a($coffee, CoffeeTest::TEST_CLASS_NAME));
-            $this->assertTrue(is_a($coffee->_option, 'Passet\Compiler\Option\Coffee'));
+            $this->assertTrue(is_a($coffee->_option, 'Passet\Compiler\Command\Coffee'));
         }, $this, self::TEST_CLASS_NAME)->__invoke();
     }
 

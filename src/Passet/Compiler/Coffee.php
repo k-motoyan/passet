@@ -8,7 +8,7 @@ use \Passet\Exception\PassetCompileException;
 
 class Coffee
 {
-    /** @var Option\Coffee coffee script compile option object. */
+    /** @var Command\Coffee coffee script compile option object. */
     private $_option;
 
     /**
@@ -31,7 +31,7 @@ class Coffee
             throw new PassetFileNotFoundException('coffee script path not found. path: ' . $coffee_path);
         }
 
-        $this->_option = new Option\Coffee($js_path, $coffee_path);
+        $this->_option = new Command\Coffee($js_path, $coffee_path);
     }
 
     /**

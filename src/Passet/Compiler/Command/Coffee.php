@@ -1,6 +1,6 @@
 <?php
 
-namespace Passet\Compiler\Option;
+namespace Passet\Compiler\Command;
 
 use \Passet\Exception\PassetCoffeeCompileOptionException;
 
