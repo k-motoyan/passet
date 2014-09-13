@@ -2,7 +2,7 @@
 
 namespace Passet\Compiler\Command;
 
-use \Passet\Exception\PassetCoffeeCompileOptionException;
+use \Passet\Exception\PassetCoffeeCompileCommandException;
 
 class Coffee
 {
@@ -24,7 +24,7 @@ class Coffee
     /**
      * Initialize js path and coffee path and compile type.
      *
-     * @throws PassetCoffeeCompileOptionException
+     * @throws PassetCoffeeCompileCommandException
      * @param string $js_path
      * @param string $coffee_path
      */
@@ -35,7 +35,7 @@ class Coffee
         } else if (is_dir($js_path) || is_dir($coffee_path)) {
             $this->_compile_type = self::JOIN_COMPILE;
         } else {
-            throw new PassetCoffeeCompileOptionException('illegal arguments.');
+            throw new PassetCoffeeCompileCommandException('illegal arguments.');
         }
 
         $this->_js_path = $js_path;

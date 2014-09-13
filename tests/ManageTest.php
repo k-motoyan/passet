@@ -61,4 +61,14 @@ class ManageTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(get_class($coffee), 'Passet\Tag\Script');
         unlink('tests/_fixture/static/js/coffee.js');
     }
+
+    /**
+     * @group compile
+     */
+    public function testStylus()
+    {
+        $stylus = Manage::stylus('tests/_fixture/static/css/', 'tests/_fixture/stylus/src/stylus.styl');
+        $this->assertEquals(get_class($stylus), 'Passet\Tag\Style');
+        unlink('tests/_fixture/static/css/stylus.css');
+    }
 }

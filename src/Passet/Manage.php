@@ -8,6 +8,7 @@ use \Passet\Tag\Style;
 use \Passet\Tag\Img;
 use \Passet\Compiler\Haxe;
 use \Passet\Compiler\Coffee;
+use \Passet\Compiler\Stylus;
 
 class Manage
 {
@@ -103,6 +104,19 @@ class Manage
     {
         $js_file_path = (new Coffee($js_path, $coffee_path))->compile();
         return self::js($js_file_path);
+    }
+
+    /**
+     * return the Style instance from compiled css by stylus.
+     *
+     * @param string $css_path output css directory path.
+     * @param string $stylus_path compilation stylus file path.
+     * @return Style
+     */
+    public static function stylus($css_path, $stylus_path)
+    {
+        $css_file_path = (new Stylus($css_path, $stylus_path))->compile();
+        return self::css($css_file_path);
     }
 
     /**
