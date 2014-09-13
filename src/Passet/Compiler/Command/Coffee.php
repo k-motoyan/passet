@@ -32,7 +32,7 @@ class Coffee
     {
         if ( (is_dir($js_path) || is_file($js_path)) && is_file($coffee_path) ) {
             $this->_compile_type = self::SINGLE_COMPILE;
-        } else if (is_dir($js_path) || is_dir($coffee_path)) {
+        } else if (is_dir($coffee_path)) {
             $this->_compile_type = self::JOIN_COMPILE;
         } else {
             throw new PassetCoffeeCompileCommandException('illegal arguments.');
