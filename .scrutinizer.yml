@@ -7,7 +7,7 @@ build:
                 command: 'mkdir src'
                 not_if: 'test -e src'
             -
-                command: 'cd src && git clone https://github.com/joyent/node.git && cd node && sudo ./configure --prefix=./ && sudo make && sudo make install && cd ../../ && export PATH=src/node/bin:$PATH'
+                command: 'cd src && git clone https://github.com/joyent/node.git && cd node && sudo ./configure --prefix=./ && sudo make && sudo make install && cd ../../ && export PATH=~/build/src/node/bin:$PATH'
                 not_if: 'test -e src/node'
             -
                 command: 'curl -L https://npmjs.org/install.sh | sh'
@@ -15,7 +15,7 @@ build:
                 command: 'cd src && git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install && cd ../../'
                 not_if: 'test -e src/haxe'
             -
-                command: 'npm install coffee-script stylus && export PATH=node_modules/.bin:$PATH'
+                command: 'npm install coffee-script stylus && export PATH=~/build/node_modules/.bin:$PATH'
                 not_if: 'test -e node_modules'
             - which haxe && haxe -v
             - which coffee && coffee -v
