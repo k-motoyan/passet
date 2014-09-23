@@ -10,7 +10,7 @@ build:
             -
                 command: 'sudo npm install coffee-script stylus'
                 not_if: 'test -e node_modules'
-            - export PATH=node_modules/.bin:vendor/bin:$PATH
+            - export PATH=node_modules/.bin:$PATH
             - which haxe && haxe -v
             - which coffee && coffee -v
             - which stylus && stylus --version
@@ -26,7 +26,7 @@ build:
     tests:
         override:
             -
-                command: 'phpunit --exclude-group compile'
+                command: 'vendor/bin/phpunit --exclude-group compile'
                 coverage:
                     file: build/logs/clover.xml
                     format: php-clover
