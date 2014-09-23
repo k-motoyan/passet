@@ -26,12 +26,9 @@ build:
             - which coffee && coffee -v
             - which stylus && stylus --version
             - which haxe && haxe
-            - which haxelib && haxelib
     cache:
         directories:
             - 'src/'
-            - '/usr/bin/haxe'
-            - '/usr/bin/haxelib'
             - 'node_modules/'
     environment:
         php:
