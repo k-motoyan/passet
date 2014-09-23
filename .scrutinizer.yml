@@ -1,31 +1,28 @@
 build:
-    dependencies:
+    container: base/ubuntu/trusty/amd64
+    project_setup:
         before:
-            - sudo rm -rf haxe
-            - sudo rm -rf bin
-            - sudo apt-get update
-            - sudo apt-get -y install git ocaml ocaml-native-compilers camlp4-extra opam nodejs npm
+            - add-apt-repository ppa:ondrej/php5-5.6
+            - apt-get update
+            - apt-get -y install git ocaml ocaml-native-compilers camlp4-extra opam nodejs npm php5
             -
-                command: 'sudo mkdir bin'
-                not_if: 'test -e bin'
-            -
-                command: 'sudo git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install && sudo cp /usr/bin/haxe ../bin/ && sudo cp /usr/bin/haxelib ../bin/ && cd ../'
+                command: 'git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && make && make install && cd ../'
                 not_if: 'test -e haxe'
             -
-                command: 'sudo npm install coffee-script stylus'
-                not_if: 'test -e node_modules'
-            - export PATH=bin:node_modules/.bin:$PATH
+                command: 'npm install -g coffee-script stylus'
+            -
+                command: 'curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer'
+                not_if: 'which composer'
+            - which composer
             - which haxe && haxe -v
             - which coffee && coffee -v
             - which stylus && stylus --version
     cache:
         directories:
-            - 'bin'
             - 'haxe'
-            - 'node_modules'
-    environment:
-        php:
-            version: 5.5.12
+            - '/usr/bin/haxe'
+            - '/usr/bin/haxelib'
+            - '/usr/local/bin/composer'
     tests:
         override:
             -
