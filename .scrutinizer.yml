@@ -9,7 +9,7 @@ build:
                 command: 'git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && make && make install && cd ../'
                 not_if: 'test -e haxe'
             -
-                command: 'npm install -g coffee-script stylus'
+                command: 'npm install coffee-script stylus'
                 not_if: 'test -e node_modules'
             -
                 command: 'curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer'
