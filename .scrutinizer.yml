@@ -5,15 +5,15 @@ build:
             - sudo apt-get -y install git ocaml ocaml-native-compilers camlp4-extra opam
             - sudo git clone --recursive git://github.com/HaxeFoundation/haxe.git
             - cd haxe && sudo make && sudo make install
-            - php -r "readfile('https://getcomposer.org/installer');" | php
-            - php composer.phar install
+            - haxe -v
+            - composer install --save-dev
     environment:
         php:
             version: 5.5.12
     tests:
         override:
             -
-                command: 'vendor/bin/phpunit --exclude-group compile'
+                command: 'phpunit --exclude-group compile'
                 coverage:
                     file: build/logs/clover.xml
                     format: php-clover
