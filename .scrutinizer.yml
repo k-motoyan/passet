@@ -1,7 +1,6 @@
 build:
     dependencies:
         before:
-            - sudo rm -rf src/haxe
             - sudo apt-get update
             - sudo apt-get -y install ocaml ocaml-native-compilers camlp4-extra opam
             -
@@ -36,7 +35,7 @@ build:
     tests:
         override:
             -
-                command: 'vendor/bin/phpunit --exclude-group compile'
+                command: 'vendor/bin/phpunit'
                 coverage:
                     file: build/logs/clover.xml
                     format: php-clover
