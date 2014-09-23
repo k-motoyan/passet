@@ -1,12 +1,15 @@
 build:
-    project_setup:
+    dependencies:
         before:
             - sudo apt-get update
             - sudo apt-get -y install git ocaml ocaml-native-compilers camlp4-extra opam
             - sudo git clone --recursive git://github.com/HaxeFoundation/haxe.git
             - cd haxe && sudo make && sudo make install
             - haxe -v
-            - composer install --save-dev
+            - composer install --dev
+    cache:
+        directories:
+            - 'haxe'
     environment:
         php:
             version: 5.5.12
