@@ -9,7 +9,7 @@ build:
             -
                 command: 'sudo npm install coffee-script stylus'
                 not_if: 'test -e node_modules'
-            - exposrt PATH=node_modules/.bin:vendor/bin:$PATH
+            - export PATH=node_modules/.bin:vendor/bin:$PATH
             - which haxe && haxe -v
             - which coffee && coffee -v
             - which stylus && stylus --version
