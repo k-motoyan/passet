@@ -14,7 +14,7 @@ build:
             -
                 command: 'sudo npm install coffee-script stylus'
                 not_if: 'test -e node_modules'
-            - export PATH=bin/:node_modules/bin/:$PATH
+            - export PATH=bin:node_modules/.bin:$PATH
             - which haxe && haxe -v
             - which coffee && coffee -v
             - which stylus && stylus --version
@@ -22,6 +22,7 @@ build:
         directories:
             - 'bin'
             - 'haxe'
+            - 'node_modules'
     environment:
         php:
             version: 5.5.12
