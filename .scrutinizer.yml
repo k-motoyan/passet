@@ -2,13 +2,14 @@ build:
     dependencies:
         before:
             - sudo rm -rf haxe
+            - sudo rm -rf bin
             - sudo apt-get update
             - sudo apt-get -y install git ocaml ocaml-native-compilers camlp4-extra opam npm
             -
                 command: 'sudo mkdir bin'
                 not_if: 'test -e bin'
             -
-                command: 'sudo git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo ./configure --bindir=../bin sudo make && sudo make install'
+                command: 'sudo git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install && sudo cp /usr/bin/haxe ../bin/ && sudo cp /usr/bin/haxelib ../bin/'
                 not_if: 'test -e haxe'
             -
                 command: 'sudo npm install coffee-script stylus'
