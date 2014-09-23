@@ -3,17 +3,11 @@ build:
         before:
             - sudo apt-get update
             - sudo apt-get -y install git ocaml ocaml-native-compilers camlp4-extra opam npm
-            -
-                command: 'sudo git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install'
-                not_if: 'test -e haxe'
-            -
-                command: 'sudo npm install -g coffee-script stylus'
-            - haxe -v
-            - coffee -v
-            - stylus --version
-    cache:
-        directories:
-            - 'haxe'
+            - sudo git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install
+            - sudo npm install -g coffee-script stylus
+            - which haxe && haxe -v
+            - which coffee && coffee -v
+            - which stylus && stylus --version
     environment:
         php:
             version: 5.5.12
