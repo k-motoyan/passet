@@ -8,15 +8,15 @@ build:
                 command: 'mkdir src'
                 not_if: 'test -e src'
             -
-                command: 'cd src && git clone https://github.com/joyent/node.git && cd node && sudo ./configure && sudo make && sudo make install && cd ../../'
+                command: 'cd src && git clone https://github.com/joyent/node.git && cd node && sudo ./configure --prefix=./ && sudo make && sudo make install && cd ../../'
                 not_if: 'test -e node'
             -
                 command: 'cd src && git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install && cd ../../'
                 not_if: 'test -e haxe'
             -
-                command: 'sudo npm install coffee-script stylus'
+                command: 'src/node/bin/npm install coffee-script stylus'
                 not_if: 'test -e node_modules'
-            - export PATH=nodejs/bin:node_modules/.bin:$PATH
+            - export PATH=src/node/bin:node_modules/.bin:$PATH
             - which node && node -v
             - which haxe && haxe -v
             - which coffee && coffee -v
