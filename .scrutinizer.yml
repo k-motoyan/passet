@@ -6,25 +6,27 @@ build:
             - sudo apt-get update
             - sudo apt-get -y install ocaml ocaml-native-compilers camlp4-extra opam
             -
-                command: 'git clone https://github.com/joyent/node.git && cd node && ./configure --prefix=../nodejs && sudo make && sudo make install && cd ../'
+                command: 'mkdir src'
+                not_if: 'test -e src'
+            -
+                command: 'cd src && git clone https://github.com/joyent/node.git && cd node && ./configure && sudo make && sudo make install && cd ../../'
                 not_if: 'test -e node'
             -
-                command: 'sudo git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install && cd ../'
+                command: 'cd src && git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install && cd ../../'
                 not_if: 'test -e haxe'
             -
                 command: 'sudo npm install coffee-script stylus'
                 not_if: 'test -e node_modules'
             - export PATH=nodejs/bin:node_modules/.bin:$PATH
+            - which node && node -v
             - which haxe && haxe -v
             - which coffee && coffee -v
             - which stylus && stylus --version
     cache:
         directories:
-            - 'haxe'
+            - 'src'
             - '/usr/bin/haxe'
             - '/usr/bin/haxelib'
-            - 'node'
-            - 'nodejs'
             - 'node_modules'
     environment:
         php:
