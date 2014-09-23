@@ -10,8 +10,8 @@ build:
             -
                 command: 'cd src && git clone https://github.com/joyent/node.git && cd node && sudo ./configure --prefix=./ && sudo make && sudo make install && cd ../../'
                 not_if: 'test -e src/node'
-            - ls -al node
-            - ls -al node/bin
+            - ls -al src/node
+            - ls -al src/node/bin
             -
                 command: 'cd src && git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install && cd ../../'
                 not_if: 'test -e src/haxe'
