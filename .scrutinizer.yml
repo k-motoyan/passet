@@ -6,8 +6,11 @@ build:
             -
                 command: 'sudo git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install'
                 not_if: 'test -e haxe'
+            -
+                command: 'sudo npm install -g coffee-script stylus'
             - haxe -v
-            - cd ~/build && composer install --dev
+            - coffee -v
+            - stylus --version
     cache:
         directories:
             - 'haxe'
