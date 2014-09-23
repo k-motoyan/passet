@@ -7,7 +7,7 @@ build:
                 command: 'sudo git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install'
                 not_if: 'test -e haxe'
             - haxe -v
-            - cd ~ && composer install --dev
+            - cd ~/build && composer install --dev
     cache:
         directories:
             - 'haxe'
