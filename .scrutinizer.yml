@@ -1,9 +1,6 @@
 build:
     dependencies:
         before:
-            - sudo ls -al src/haxe
-            - sudo ls -al src/haxe/haxe
-            - sudo ls -al src/haxe/libs
             - sudo apt-get update
             - sudo apt-get -y install ocaml ocaml-native-compilers camlp4-extra opam
             -
@@ -25,6 +22,9 @@ build:
                 command: 'cd src && git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install && sudo mkdir bin && sudo cp /usr/bin/haxe bin/ && sudo cp /usr/bin/haxelib bin/ && cd ../../'
                 not_if: 'test -e src/haxe'
             - export PATH=~/build/src/haxe/bin:$PATH
+            - export HAXE_STD_PATH=~/build/src/haxe/std
+            - export HAXE_LIBRARY_PATH=~/build/src/haxe/libs
+            - export NEKOPATH=~/build/src/haxe/libs/neko
             - which coffee && coffee -v
             - which stylus && stylus --version
             - which haxe && haxe
