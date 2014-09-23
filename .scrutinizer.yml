@@ -10,6 +10,8 @@ build:
                 command: 'cd src && git clone https://github.com/joyent/node.git && cd node && sudo ./configure --prefix=./ && sudo make && sudo make install && cd ../../ && export PATH=src/node/bin:$PATH'
                 not_if: 'test -e src/node'
             -
+                command: 'curl -L https://npmjs.org/install.sh | sh'
+            -
                 command: 'cd src && git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install && cd ../../'
                 not_if: 'test -e src/haxe'
             -
