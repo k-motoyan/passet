@@ -2,11 +2,12 @@ build:
     dependencies:
         before:
             - sudo apt-get update
-            - sudo apt-get -y install git ocaml ocaml-native-compilers camlp4-extra opam
-            - sudo git clone --recursive git://github.com/HaxeFoundation/haxe.git
-            - cd haxe && sudo make && sudo make install
+            - sudo apt-get -y install git ocaml ocaml-native-compilers camlp4-extra opam npm
+            -
+                command: 'sudo git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install'
+                not_if: 'test -e haxe'
             - haxe -v
-            - composer install --dev
+            - cd ~ && composer install --dev
     cache:
         directories:
             - 'haxe'
