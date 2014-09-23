@@ -1,15 +1,14 @@
 build:
     dependencies:
         before:
-            - sudo rm -rf haxe
-            - sudo rm -rf node
+            - sudo rm -rf src
             - sudo apt-get update
             - sudo apt-get -y install ocaml ocaml-native-compilers camlp4-extra opam
             -
                 command: 'mkdir src'
                 not_if: 'test -e src'
             -
-                command: 'cd src && git clone https://github.com/joyent/node.git && cd node && ./configure && sudo make && sudo make install && cd ../../'
+                command: 'cd src && git clone https://github.com/joyent/node.git && cd node && sudo ./configure && sudo make && sudo make install && cd ../../'
                 not_if: 'test -e node'
             -
                 command: 'cd src && git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install && cd ../../'
