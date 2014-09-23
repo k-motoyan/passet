@@ -6,10 +6,13 @@ use \Passet\Exception\PassetInvalidArgumentException;
 use \Passet\Exception\PassetFileNotFoundException;
 use \Passet\Exception\PassetCompileException;
 
-class Stylus
+class Stylus extends CompilerAbs
 {
-    /** @var Command\Stylus stylus compile option object. */
-    private $_option;
+    /** @var string compiled file put path. */
+    private $_stylus_file_path;
+
+    /** @var Command\Stylus stylus compile command object. */
+    private $_command;
 
     /**
      * Set compile option object.
@@ -34,7 +37,8 @@ class Stylus
             throw new PassetFileNotFoundException('stylus path not found. path: ' . $stylus_path);
         }
 
-        $this->_option = new Command\Stylus($css_path, $stylus_path);
+        $this->_stylus_file_path = str_replace('/', DIRECTORY_SEPARATOR, $stylus_path);
+        $this->_command = new Command\Stylus($css_path, $stylus_path);
     }
 
     /**
@@ -45,10 +49,15 @@ class Stylus
      */
     public function compile()
     {
-        exec($this->_option->buildCompileCommand(), $output, $result_code);
+        $output_file_name = $this->_command->getOutputCssFileName();
+        if (!$this->_needCompile($output_file_name, $this->_stylus_file_path)) {
+            return $output_file_name;
+        }
+
+        exec($this->_command->buildCompileCommand(), $output, $result_code);
         if ($result_code > 0) {
             throw new PassetCompileException('Stylus compile Error!!');
         }
-        return $this->_option->getOutputCssFileName();
+        return $output_file_name;
     }
 }

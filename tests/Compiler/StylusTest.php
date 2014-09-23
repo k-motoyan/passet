@@ -11,7 +11,7 @@ class StylusTest extends PHPUnit_Framework_TestCase
         Closure::bind(function() {
             $stylus = new Stylus('tests/_fixture/static/css/', 'tests/_fixture/stylus/src/stylus.styl');
             $this->assertTrue(is_a($stylus, StylusTest::TEST_CLASS_NAME));
-            $this->assertTrue(is_a($stylus->_option, 'Passet\Compiler\Command\Stylus'));
+            $this->assertTrue(is_a($stylus->_command, 'Passet\Compiler\Command\Stylus'));
         }, $this, self::TEST_CLASS_NAME)->__invoke();
     }
 
@@ -42,7 +42,17 @@ class StylusTest extends PHPUnit_Framework_TestCase
     /**
      * @group compile
      */
-    public function testCompile()
+    public function testCompileWhenCompiledFileNotExists()
+    {
+        $css_file = (new Stylus('tests/_fixture/static/css/', 'tests/_fixture/stylus/src/stylus.styl'))->compile();
+        $this->assertTrue(file_exists($css_file));
+    }
+
+    /**
+     * @group compile
+     * @depends testCompileWhenCompiledFileNotExists
+     */
+    public function testCompileWhenCompiledFileAlreadyExists()
     {
         $css_file = (new Stylus('tests/_fixture/static/css/', 'tests/_fixture/stylus/src/stylus.styl'))->compile();
         $this->assertTrue(file_exists($css_file));

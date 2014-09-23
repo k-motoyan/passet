@@ -6,3 +6,5 @@ passet.iml
 composer.phar
 composer.lock
 Vagrantfile
+
+!.empty
