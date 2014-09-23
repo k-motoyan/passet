@@ -10,9 +10,14 @@ build:
                 not_if: 'test -e haxe'
             -
                 command: 'npm install -g coffee-script stylus'
+                not_if: 'test -e node_modules'
             -
                 command: 'curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer'
                 not_if: 'which composer'
+            -
+                command: 'composer install'
+                not_if: 'test -e vendor'
+            - exposrt PATH=$PATH:node_modules/.bin:vendor/bin
             - which composer
             - which haxe && haxe -v
             - which coffee && coffee -v
@@ -22,11 +27,13 @@ build:
             - 'haxe'
             - '/usr/bin/haxe'
             - '/usr/bin/haxelib'
+            - 'node_modules'
             - '/usr/local/bin/composer'
+            - 'vendor'
     tests:
         override:
             -
-                command: 'vendor/bin/phpunit --exclude-group compile'
+                command: 'phpunit --exclude-group compile'
                 coverage:
                     file: build/logs/clover.xml
                     format: php-clover
