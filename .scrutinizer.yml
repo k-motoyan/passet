@@ -4,7 +4,7 @@ build:
             - sudo rm -rf haxe
             - sudo rm -rf bin
             - sudo apt-get update
-            - sudo apt-get -y install git ocaml ocaml-native-compilers camlp4-extra opam npm
+            - sudo apt-get -y install git ocaml ocaml-native-compilers camlp4-extra opam nodejs npm
             -
                 command: 'sudo mkdir bin'
                 not_if: 'test -e bin'
