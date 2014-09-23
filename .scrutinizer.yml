@@ -1,8 +1,7 @@
 build:
     dependencies:
         before:
-            - export PATH=~/build/src/haxe/bin:$PATH
-            - cd tests/_fixture/haxe/ && haxe build.hxml
+            - sudo ls -al src/haxe
             - sudo apt-get update
             - sudo apt-get -y install ocaml ocaml-native-compilers camlp4-extra opam
             -
