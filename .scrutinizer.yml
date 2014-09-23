@@ -3,7 +3,10 @@ build:
         before:
             - sudo rm -rf haxe
             - sudo apt-get update
-            - sudo apt-get -y install git ocaml ocaml-native-compilers camlp4-extra opam nodejs npm
+            - sudo apt-get -y install ocaml ocaml-native-compilers camlp4-extra opam
+            -
+                command: 'git clone https://github.com/joyent/node.git && cd node && ./configure --prefix=../nodejs sudo make && sudo make install'
+                not_if: 'test -e node'
             -
                 command: 'sudo git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install && cd ../'
                 not_if: 'test -e haxe'
@@ -19,6 +22,8 @@ build:
             - 'haxe'
             - '/usr/bin/haxe'
             - '/usr/bin/haxelib'
+            - 'node'
+            - 'nodejs'
             - 'node_modules'
     environment:
         php:
