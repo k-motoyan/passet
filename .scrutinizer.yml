@@ -16,7 +16,7 @@ build:
     tests:
         override:
             -
-                command: 'phpunit --exclude-group compile'
+                command: 'vendor/bin/phpunit --exclude-group compile'
                 coverage:
                     file: build/logs/clover.xml
                     format: php-clover
