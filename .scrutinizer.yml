@@ -1,7 +1,7 @@
 build:
     dependencies:
         before:
-            - sudo rm -rf src
+            - sudo rm -rf haxe
             - sudo apt-get update
             - sudo apt-get -y install ocaml ocaml-native-compilers camlp4-extra opam
             -
@@ -9,15 +9,16 @@ build:
                 not_if: 'test -e src'
             -
                 command: 'cd src && git clone https://github.com/joyent/node.git && cd node && sudo ./configure --prefix=./ && sudo make && sudo make install && cd ../../'
-                not_if: 'test -e node'
+                not_if: 'test -e src/node'
+            - ls -al node
+            - ls -al node/bin
             -
                 command: 'cd src && git clone --recursive git://github.com/HaxeFoundation/haxe.git && cd haxe && sudo make && sudo make install && cd ../../'
-                not_if: 'test -e haxe'
+                not_if: 'test -e src/haxe'
             -
                 command: 'src/node/bin/npm install coffee-script stylus'
                 not_if: 'test -e node_modules'
             - export PATH=src/node/bin:node_modules/.bin:$PATH
-            - which node && node -v
             - which haxe && haxe -v
             - which coffee && coffee -v
             - which stylus && stylus --version
