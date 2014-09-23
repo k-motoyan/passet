@@ -2,9 +2,8 @@ build:
     dependencies:
         before:
             - sudo apt-get update
-            - sudo apt-get install nodejs
+            - sudo apt-get -y install ocaml ocaml-native-compilers camlp4-extra opam nodejs
             - sudo npm install -g coffee-script stylus
-            - sudo apt-get install ocaml ocaml-native-compilers camlp4-extra opam
             - sudo clone --recursive git://github.com/HaxeFoundation/haxe.git
             - sudo cd haxe
             - sudo make
