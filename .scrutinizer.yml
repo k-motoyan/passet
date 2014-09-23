@@ -1,6 +1,7 @@
 build:
     dependencies:
         before:
+            - sudo curl http://npmjs.org/install.sh | sudo sh
             - sudo npm install -g coffee-script stylus
             - sudo apt-get update
             - sudo apt-get install ocaml ocaml-native-compilers camlp4-extra opam
