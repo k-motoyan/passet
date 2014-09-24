@@ -15,7 +15,7 @@ abstract class CompilerAbs
      * Check whether compiler compile it.
      *
      * @param string $output_file
-     * @param string|string[] $compile_files
+     * @param string|array $compile_files
      * @return bool
      */
     protected function _needCompile($output_file, $compile_files)
